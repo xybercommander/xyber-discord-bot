@@ -27,7 +27,10 @@ client.on('message', async msg => {
          // msg.channel.send(`${member}`);      
          const number = parseInt(num)
          for(var i = 0; i < number; i++) {
-            msg.channel.send(`${member} whaddup`);
+            msg.channel.send(`${member} bhalo toh?`);
+            if(i === 20) {
+               break;
+            }
          }
       }      
    }
