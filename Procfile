@@ -1,1 +1,1 @@
-web: npm start
+web: nodemon bot.js
