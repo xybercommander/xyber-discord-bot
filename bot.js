@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const { apiKey } = require('./apiKey')
+const { apiKey } = require('./apiKey') // not required
 
+// Generate your bot's id and give it as login()'s parameter
 client.login(apiKey)
 const PREFIX = '$';
 
