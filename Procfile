@@ -1,1 +1,1 @@
-web: nodemon bot.js
+web: node bot.js
