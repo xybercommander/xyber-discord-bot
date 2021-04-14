@@ -1,9 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const { apiKey } = require('./apiKey') // not required
+require('dotenv').config();
 
-// Generate your bot's id and give it as login()'s parameter
-client.login(apiKey)
+client.login(process.env.BOTTOKEN)
 const PREFIX = '$';
 
 //------ RUNNING THE AUTHENTICATION AND RUNNING THE BOT ------//
