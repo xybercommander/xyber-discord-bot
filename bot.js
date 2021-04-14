@@ -1,8 +1,9 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const { apiKey } = require('./apikey');
 require('dotenv').config();
 
-client.login(process.env.BOTTOKEN)
+client.login(apiKey)
 const PREFIX = '$';
 
 //------ RUNNING THE AUTHENTICATION AND RUNNING THE BOT ------//
