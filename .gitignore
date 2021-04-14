@@ -1,2 +1,5 @@
+#api key
 .env
+
+#dependencies
 /node_modules
