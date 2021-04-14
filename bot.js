@@ -34,3 +34,14 @@ client.on('message', async msg => {
       }      
    }
 });
+
+//--------- COMMAND ONLY MESSAGES ---------//
+client.on('message', async msg => {
+   if(msg.content.startsWith(PREFIX)) {
+      const CMD_NAME = msg.content.substring(1);
+
+      if(CMD_NAME === 'ping') {
+         msg.reply('pong!')
+      }
+   }
+});
