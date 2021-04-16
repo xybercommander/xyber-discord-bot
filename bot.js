@@ -38,18 +38,6 @@ client.on('message', async msg => {
    }
 });
 
-client.on('message', async msg => {
-   if(msg.content.startsWith(PREFIX)) {
-      const [CMD_NAME, num] = msg.content.trim().substring(PREFIX.length).split(/\s+/);
-
-      if(CMD_NAME === 'bb') {
-         for(var i = 0; i < parseInt(num); i++) {
-            msg.channel.send('bbgif');
-         }
-      }
-   }
-});
-
 //--------- COMMAND ONLY MESSAGES ---------//
 client.on('message', async msg => {
    if(msg.content.startsWith(PREFIX)) {
