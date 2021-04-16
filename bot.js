@@ -1,11 +1,10 @@
-// const config = require('./config.json')
-// console.log(config.token);   
-
 const Discord = require('discord.js');
 const client = new Discord.Client();
 require('dotenv').config();
 
 client.login(process.env.BOT_TOKEN)
+
+//------------ VARIABLES ------------//
 const PREFIX = '$';
 
 //------ RUNNING THE AUTHENTICATION AND RUNNING THE BOT ------//
@@ -14,6 +13,7 @@ client.on('ready', () => {
    console.log(`Logged in as: ${client.user.tag}`);
 });
 
+//---------- SPAM COMMAND ----------//
 client.on('message', async msg => {      
    if(msg.content.startsWith(PREFIX)) {
       const [CMD_NAME, username, num] = 
@@ -38,7 +38,7 @@ client.on('message', async msg => {
    }
 });
 
-//--------- COMMAND ONLY MESSAGES ---------//
+//--------- PING COMMAND ---------//
 client.on('message', async msg => {
    if(msg.content.startsWith(PREFIX)) {
       const CMD_NAME = msg.content.substring(1);
@@ -48,3 +48,6 @@ client.on('message', async msg => {
       }      
    }
 });
+
+//-------- ROAST COMMAND --------//
+
