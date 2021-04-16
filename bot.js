@@ -22,6 +22,7 @@ const roasts = [
    ", when you were born, the doctor threw you out the window, but the window threw you back",   
 ]
 
+
 //------ RUNNING THE AUTHENTICATION AND RUNNING THE BOT ------//
 client.on('ready', () => {
    console.log('XYBER IS RUNNING WOOOHOOO');
