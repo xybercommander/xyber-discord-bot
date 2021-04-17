@@ -98,12 +98,12 @@ client.on('message', async msg => {
 });
 
 
-//------- VOICE COMMAND -------//
+//------- XYBER COMMAND -------//
 client.on('message', async msg => {
    if(msg.content.startsWith(PREFIX)) {
-      const [CMD_NAME, voice_command] = msg.content.trim().substring(PREFIX.length).split(/\s+/);
+      const [CMD_NAME, xyber_command] = msg.content.trim().substring(PREFIX.length).split(/\s+/);
 
-      if(CMD_NAME === 'xyber' && voice_command === 'laugh') {  
+      if(CMD_NAME === 'xyber' && xyber_command === 'laugh') {  
          const { voice } = msg.member;
          
          if(!voice.channelID) {
@@ -118,6 +118,20 @@ client.on('message', async msg => {
          setTimeout(() => {
             msg.member.voice.channel.leave();
          }, 5000);
+      }
+   }
+});
+
+
+//------- SPARTA COMMAND -------//
+client.on('message', async msg => {
+   if(msg.content.startsWith(PREFIX)) {
+      const [CMD_NAME, sparta_command] = msg.content.trim().substring(PREFIX.length).split(/\s+/);
+
+      if(CMD_NAME === 'sparta' && sparta_command === 'sauce') {
+         msg.channel.send("Yummy, Here's a spicy Sparta for you ( ͡≖ ͜ʖ ͡≖)\n", {
+            files: ['https://scontent.fccu10-1.fna.fbcdn.net/v/t31.18172-8/1496023_455803201208595_2068773226_o.jpg?_nc_cat=110&ccb=1-3&_nc_sid=174925&_nc_ohc=dn9woPaug4QAX90t-yt&_nc_oc=AQmnjUBiB1UfgaRO5D0NFfXaxbv4EmfikAAaPIAQLtXS49vWgo5m-m7Y9W6zLSzG6rc&_nc_ht=scontent.fccu10-1.fna&oh=1eb70e521307df0c8aae988c464ac447&oe=60A205AA']
+         });
       }
    }
 });
