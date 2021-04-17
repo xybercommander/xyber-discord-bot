@@ -48,14 +48,10 @@ client.on('message', async msg => {
          
          //-------- IF ARGUEMENTS LENGTH IS 1 --------//
          if(args.length === 1) {
-            if(parseInt(args[0]) === NaN) {               
-               msg.channel.send(`${member} ${args[0]}`);
-            } else {
-               for(var i = 0; i < parseInt(num); i++) {
-                  msg.channel.send(`${member}`);
-                  if(i === 20) {
-                     break;
-                  }
+            for(var i = 0; i < parseInt(args[0]); i++) {
+               msg.channel.send(`${member}`);
+               if(i === 20) {
+                  break;
                }
             }
          }
