@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
+const path = require('path');
+const ytdl = require('ytdl-core');
 require('dotenv').config();
 
 client.login(process.env.BOT_TOKEN)
@@ -84,12 +86,25 @@ client.on('message', async msg => {
 
 
 //------- VOICE COMMAND -------//
-client.on('message', msg => {
+client.on('message', async msg => {
    if(msg.content.startsWith(PREFIX)) {
-      const CMD_NAME = msg.content.substring(1);
+      const [CMD_NAME, voice_command] = msg.content.trim().substring(PREFIX.length).split(/\s+/);
 
-      if(CMD_NAME === 'xyber-speak') {
+      if(CMD_NAME === 'xyber' && voice_command === 'laugh') {  
+         const { voice } = msg.member;
          
+         if(!voice.channelID) {
+            msg.reply('Please join a voice channel first');
+         }
+         
+         var connection = await msg.member.voice.channel.join();
+         connection.play(path.join(__dirname, 'assets/Recording.m4a'), {
+            volume: 2.0
+         });
+
+         setTimeout(() => {
+            msg.member.voice.channel.leave();
+         }, 5000);
       }
    }
 });
