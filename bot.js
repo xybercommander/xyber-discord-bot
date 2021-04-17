@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const fetch = require('node-fetch');
 require('dotenv').config();
 
 client.login(process.env.BOT_TOKEN)
@@ -64,6 +65,7 @@ client.on('message', async msg => {
    }
 });
 
+
 //-------- ROAST COMMAND --------//
 client.on('message', async msg => {
    if(msg.content.startsWith(PREFIX)) {
@@ -74,6 +76,37 @@ client.on('message', async msg => {
          const member = msg.guild.members.cache.get(user);
 
          msg.channel.send(`${member}${roasts[Math.floor(Math.random() * roasts.length)]}`)
+      }
+   }
+});
+
+
+//------- DOGE LANGUAGE COMMAND -------//
+client.on('message', async msg => {
+   if(msg.content.startsWith(PREFIX)) {
+      const [CMD_NAME, ...args] = msg.content.trim().substring(PREFIX.length).split(/\s+/);
+      
+      if(CMD_NAME === 'doge') {
+         // console.log(...args);
+         var api_arguement = '';
+
+         for(var i = 0; i < args.length; i++) {
+            if(i != args.length - 1) {
+               api_arguement += `${args[i]}%20`;
+            } else {
+               api_arguement += `${args[i]}`;
+            }
+         }
+         
+         // Fetching the api and sending the translation to the channel
+         fetch(`https://api.funtranslations.com/translate/doge.json?text=${api_arguement}`)
+            .then(response => {
+               return response.json();
+            })
+            .then(data => {
+               var translation = data['contents']['translated'];
+               msg.channel.send(translation);
+            })
       }
    }
 });
