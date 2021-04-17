@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 // const fetch = require('node-fetch');
 const path = require('path');
+const { isNumber } = require('util');
 const ytdl = require('ytdl-core');
 require('dotenv').config();
 
@@ -37,26 +38,42 @@ client.on('ready', () => {
 //---------- SPAM COMMAND ----------//
 client.on('message', async msg => {      
    if(msg.content.startsWith(PREFIX)) {
-      const [CMD_NAME, username, num] = 
+      const [CMD_NAME, username, ...args] = 
          msg.content.trim().substring(PREFIX.length).split(/\s+/);
       
       // Spam Method
-      if(CMD_NAME === 'spam') {         
-         // if(username.length === 0 || num.length === 0) 
-         //    return msg.reply('Please provide an id and a number like: $spam <username> <number>');
+      if(CMD_NAME === 'spam') {                  
          var user = username.substring(3, username.length - 1);
-         const member = msg.guild.members.cache.get(user);   
-         // console.log(msg.content);
-         // msg.channel.send(`${member}`);               
-         for(var i = 0; i < parseInt(num); i++) {
-            msg.channel.send(`${member} whaddup?`);
-            if(i === 20) {
-               break;
+         const member = msg.guild.members.cache.get(user);            
+         
+         //-------- IF ARGUEMENTS LENGTH IS 1 --------//
+         if(args.length === 1) {
+            if(parseInt(args[0]) === NaN) {               
+               msg.channel.send(`${member} ${args[0]}`);
+            } else {
+               for(var i = 0; i < parseInt(num); i++) {
+                  msg.channel.send(`${member}`);
+                  if(i === 20) {
+                     break;
+                  }
+               }
+            }
+         }
+         //-------- IF ARGUEMENTS LENGTH > 1 --------//
+          else {
+            var text = '';
+            for(var i = 0; i < args.length; i++) {
+               text += args[i] + ' ';
+            }
+
+            for(var i = 0; i < 5; i++) {
+               msg.channel.send(`${member} ${text}`);               
             }
          }
       }      
    }
 });
+
 
 //--------- PING COMMAND ---------//
 client.on('message', async msg => {
