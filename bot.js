@@ -111,7 +111,7 @@ client.on('message', async msg => {
          }
          
          var connection = await msg.member.voice.channel.join();
-         connection.play(path.join(__dirname, 'assets/Recording.m4a'), {
+         connection.play(path.join(__dirname, 'assets/laugh.mp3'), {
             volume: 2.0
          });
 
@@ -128,10 +128,29 @@ client.on('message', async msg => {
    if(msg.content.startsWith(PREFIX)) {
       const [CMD_NAME, sparta_command] = msg.content.trim().substring(PREFIX.length).split(/\s+/);
 
+      // 1
       if(CMD_NAME === 'sparta' && sparta_command === 'sauce') {
          msg.channel.send("Yummy, Here's a spicy Sparta for you ( ͡≖ ͜ʖ ͡≖)\n", {
             files: ['https://scontent.fccu10-1.fna.fbcdn.net/v/t31.18172-8/1496023_455803201208595_2068773226_o.jpg?_nc_cat=110&ccb=1-3&_nc_sid=174925&_nc_ohc=dn9woPaug4QAX90t-yt&_nc_oc=AQmnjUBiB1UfgaRO5D0NFfXaxbv4EmfikAAaPIAQLtXS49vWgo5m-m7Y9W6zLSzG6rc&_nc_ht=scontent.fccu10-1.fna&oh=1eb70e521307df0c8aae988c464ac447&oe=60A205AA']
          });
+      }
+
+      // 2
+      if(CMD_NAME === 'sparta' && sparta_command === 'gali') {  
+         const { voice } = msg.member;
+         
+         if(!voice.channelID) {
+            msg.reply('Please join a voice channel first');
+         }
+         
+         var connection = await msg.member.voice.channel.join();
+         connection.play(path.join(__dirname, 'assets/sparta_gali.mp3'), {
+            volume: 1.3
+         });
+
+         setTimeout(() => {
+            msg.member.voice.channel.leave();
+         }, 6000);
       }
    }
 });
