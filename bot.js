@@ -23,6 +23,8 @@ const roasts = [
    ", when you were born, the doctor threw you out the window, but the window threw you back",   
 ]
 
+// console.log(msg.member); --------> SHOWS DETAILS ABOUT THE MEMBER
+
 
 //------ RUNNING THE AUTHENTICATION AND RUNNING THE BOT ------//
 client.on('ready', () => {
@@ -81,32 +83,13 @@ client.on('message', async msg => {
 });
 
 
-//------- DOGE LANGUAGE COMMAND -------//
-client.on('message', async msg => {
+//------- VOICE COMMAND -------//
+client.on('message', msg => {
    if(msg.content.startsWith(PREFIX)) {
-      const [CMD_NAME, ...args] = msg.content.trim().substring(PREFIX.length).split(/\s+/);
-      
-      if(CMD_NAME === 'doge') {
-         // console.log(...args);
-         var api_arguement = '';
+      const CMD_NAME = msg.content.substring(1);
 
-         for(var i = 0; i < args.length; i++) {
-            if(i != args.length - 1) {
-               api_arguement += `${args[i]}%20`;
-            } else {
-               api_arguement += `${args[i]}`;
-            }
-         }
+      if(CMD_NAME === 'xyber-speak') {
          
-         // Fetching the api and sending the translation to the channel
-         fetch(`https://api.funtranslations.com/translate/doge.json?text=${api_arguement}`)
-            .then(response => {
-               return response.json();
-            })
-            .then(data => {
-               var translation = data['contents']['translated'];
-               msg.channel.send(translation);
-            })
       }
    }
 });
