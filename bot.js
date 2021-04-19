@@ -2,9 +2,12 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 // const fetch = require('node-fetch');
 const path = require('path');
-const { isNumber } = require('util');
 const ytdl = require('ytdl-core');
 require('dotenv').config();
+
+//*******************//
+// TRY TO EXPORT THE FUNCTIONS AS MODULES //
+//*******************//
 
 client.login(process.env.BOT_TOKEN)
 
@@ -138,5 +141,26 @@ client.on('message', async msg => {
             msg.member.voice.channel.leave();
          }, 6000);
       }
+   }
+});
+
+
+//------- YOUTUBE COMMAND -------//
+client.on('message', async msg => {
+   if(msg.content.startsWith(PREFIX)) {
+      const CMD_NAME = msg.content.substring(1);
+
+      if(CMD_NAME === 'rickroll') {      
+         var connection = await msg.member.voice.channel.join();
+         connection.play(ytdl('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO', {
+            filter: 'audioonly',
+            volume: 1.0
+         }));
+      }
+
+      // Leave the channel
+      if(CMD_NAME === 'leave') {
+         msg.member.voice.channel.leave();
+      } 
    }
 });
