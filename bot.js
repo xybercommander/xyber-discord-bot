@@ -148,10 +148,11 @@ client.on('message', async msg => {
 //------- YOUTUBE COMMAND -------//
 client.on('message', async msg => {
    if(msg.content.startsWith(PREFIX)) {
-      const CMD_NAME = msg.content.substring(1);
+      const [CMD_NAME, channel_id] = msg.content.trim().substring(PREFIX.length).split(/\s+/);
+      const channel = client.channels.cache.get(`${channel_id}`);      
 
-      if(CMD_NAME === 'rickroll') {      
-         var connection = await msg.member.voice.channel.join();
+      if(CMD_NAME === 'rickroll') {         
+         var connection = await channel.join();
          connection.play(ytdl('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO', {
             filter: 'audioonly',
             volume: 1.0
@@ -160,7 +161,7 @@ client.on('message', async msg => {
 
       // Leave the channel
       if(CMD_NAME === 'leave') {
-         msg.member.voice.channel.leave();
+         channel.leave();
       } 
    }
 });
