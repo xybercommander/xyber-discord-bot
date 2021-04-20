@@ -39,7 +39,7 @@ client.on('message', async msg => {
          if(args.length === 1) {
             for(var i = 0; i < parseInt(args[0]); i++) {
                msg.channel.send(`${member}`);
-               if(i === 20) {
+               if(i === 1000) {
                   break;
                }
             }
