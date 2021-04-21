@@ -102,16 +102,20 @@ client.on('message', async msg => {
 //-------- MENTION + ONE WORD COMMAND --------//
 client.on('message', async msg => {
    if(msg.content.startsWith(PREFIX)) {
-      const [CMD_NAME, username] = msg.content.trim().substring(PREFIX.length).split(/\s+/);
-      var user = username.substring(3, username.length - 1);
-      const member = msg.guild.members.cache.get(user);
+      const [CMD_NAME, username] = msg.content.trim().substring(PREFIX.length).split(/\s+/);      
 
+      //-------- ROAST COMMAND --------//
       if(CMD_NAME === 'roast') {         
+         var user = username.substring(3, username.length - 1);
+         const member = msg.guild.members.cache.get(user);
          msg.channel.send(`${member}${roasts[Math.floor(Math.random() * roasts.length)]}`)
       }
 
+      //-------- DISCONNECT COMMAND --------//
       if(CMD_NAME === 'dc') {
-         member.voice.kick();
+         var user = username.substring(3, username.length - 1);
+         const member = msg.guild.members.cache.get(user);
+         msg.channel.send(member);
       }
    }
 });
@@ -195,3 +199,8 @@ client.on('message', async msg => {
       } 
    }
 });
+
+
+client.on('disconnect', function(event){
+   console.log('DC');
+})
