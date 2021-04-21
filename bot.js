@@ -50,7 +50,8 @@ client.on('message', async msg => {
                \n4. `$xyber laugh` -> Use this command to make xyber laugh \
                \n5. `$sparta gali` -> Sparta ka gali sunna hai? \
                \n6. `$sparta sauce` -> Want to see a spicy sparta? ( ͡≖ ͜ʖ ͡≖)\
-               \n7. `$rickroll <channel-id>` -> Start rickrolling people in the given channel id'
+               \n7. `$rickroll <channel-id>` -> Start rickrolling people in the given channel id \
+               \n8. `$dc <username>` -> Disconnect user from the channel you\'re in'
             )
             // .setDescription('')
 
