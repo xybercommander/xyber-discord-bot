@@ -98,16 +98,19 @@ client.on('message', async msg => {
 });
 
 
-//-------- ROAST COMMAND --------//
+//-------- MENTION + ONE WORD COMMAND --------//
 client.on('message', async msg => {
    if(msg.content.startsWith(PREFIX)) {
       const [CMD_NAME, username] = msg.content.trim().substring(PREFIX.length).split(/\s+/);
+      var user = username.substring(3, username.length - 1);
+      const member = msg.guild.members.cache.get(user);
 
-      if(CMD_NAME === 'roast') {
-         var user = username.substring(3, username.length - 1);
-         const member = msg.guild.members.cache.get(user);
-
+      if(CMD_NAME === 'roast') {         
          msg.channel.send(`${member}${roasts[Math.floor(Math.random() * roasts.length)]}`)
+      }
+
+      if(CMD_NAME === 'dc') {
+         member.voice.kick();
       }
    }
 });
