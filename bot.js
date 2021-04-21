@@ -5,11 +5,7 @@ const path = require('path');
 const ytdl = require('ytdl-core');
 require('dotenv').config();
 
-//*******************//
-// TRY TO EXPORT THE FUNCTIONS AS MODULES //
-//*******************//
-
-client.login(process.env.BOT_TOKEN)
+client.login(process.env.BOT_TOKEN);
 
 //------------ VARIABLES ------------//
 const PREFIX = '$';
@@ -22,6 +18,19 @@ const { roasts, spartaImages } = require('./modules/variables')
 client.on('ready', () => {
    console.log('XYBER IS RUNNING WOOOHOOO');
    console.log(`Logged in as: ${client.user.tag}`);
+});
+
+
+
+//--------- PING COMMAND ---------//
+client.on('message', async msg => {
+   if(msg.content.startsWith(PREFIX)) {
+      const CMD_NAME = msg.content.substring(1);
+
+      if(CMD_NAME === 'ping') {
+         msg.reply('pong!')
+      }      
+   }
 });
 
 //---------- SPAM COMMAND ----------//
@@ -55,18 +64,6 @@ client.on('message', async msg => {
                msg.channel.send(`${member} ${text}`);               
             }
          }
-      }      
-   }
-});
-
-
-//--------- PING COMMAND ---------//
-client.on('message', async msg => {
-   if(msg.content.startsWith(PREFIX)) {
-      const CMD_NAME = msg.content.substring(1);
-
-      if(CMD_NAME === 'ping') {
-         msg.reply('pong!')
       }      
    }
 });
@@ -145,7 +142,7 @@ client.on('message', async msg => {
 });
 
 
-//------- YOUTUBE COMMAND -------//
+//------- RICK ROLL COMMAND -------//
 client.on('message', async msg => {
    if(msg.content.startsWith(PREFIX)) {
       const [CMD_NAME, channel_id] = msg.content.trim().substring(PREFIX.length).split(/\s+/);
