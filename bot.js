@@ -115,7 +115,7 @@ client.on('message', async msg => {
       if(CMD_NAME === 'dc') {
          var user = username.substring(3, username.length - 1);
          const member = msg.guild.members.cache.get(user);
-         if(member.displayName !== 'Xyber') {
+         if(member.id !== '290353813989228554') {
             member.voice.kick();
          }
       }
