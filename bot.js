@@ -36,11 +36,14 @@ client.on('message', async msg => {
 
       if(CMD_NAME === 'help') {         
 
-
+         const intro_embed = new Discord.MessageEmbed()
+            .setImage('https://cdn.discordapp.com/avatars/831521597235265536/404710d5553f1b7b749006c9daf51fbe.png?size=256')
+            .setTitle('I see you need some help')         
          
          const help_embed = new Discord.MessageEmbed()
             .setColor(0x5ab43e)
-            .setTitle('List Of Commands')
+            .setTitle('Here\'s some help\nList Of Commands')            
+            .setThumbnail('https://cdn.discordapp.com/avatars/831521597235265536/404710d5553f1b7b749006c9daf51fbe.png?size=256')
             .setDescription(
                '1. `$ping` -> Use this command to ping the bot \
                \n2. `$roast <username>` -> Use this command to roast a user \
@@ -48,10 +51,11 @@ client.on('message', async msg => {
                \n4. `$xyber laugh` -> Use this command to make xyber laugh \
                \n5. `$sparta gali` -> Sparta ka gali sunna hai? \
                \n6. `$sparta sauce` -> Want to see a spicy sparta? ( ͡≖ ͜ʖ ͡≖)\
-               \n7. `$rickroll <channel-id>` -> Use this command to start rickrolling people in the given channel id'
+               \n7. `$rickroll <channel-id>` -> Start rickrolling people in the given channel id'
             )
             // .setDescription('')
 
+            msg.channel.send(intro_embed);
             msg.channel.send(help_embed);   
       }
    }
