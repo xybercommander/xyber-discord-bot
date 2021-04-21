@@ -43,7 +43,6 @@ client.on('message', async msg => {
          const help_embed = new Discord.MessageEmbed()
             .setColor(0x5ab43e)
             .setTitle('Here\'s some help\nList Of Commands')            
-            .setThumbnail('https://cdn.discordapp.com/avatars/831521597235265536/404710d5553f1b7b749006c9daf51fbe.png?size=256')
             .setDescription(
                '1. `$ping` -> Use this command to ping the bot \
                \n2. `$roast <username>` -> Use this command to roast a user \
