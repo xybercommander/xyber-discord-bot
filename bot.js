@@ -22,16 +22,42 @@ client.on('ready', () => {
 
 
 
-//--------- PING COMMAND ---------//
+// ------------------------------------ //
+// ----------ONE WORD COMMANDS--------- //
+// ------------------------------------ //
 client.on('message', async msg => {
    if(msg.content.startsWith(PREFIX)) {
       const CMD_NAME = msg.content.substring(1);
 
+      //--------- PING COMMAND ---------//
       if(CMD_NAME === 'ping') {
          msg.reply('pong!')
-      }      
+      }
+
+      if(CMD_NAME === 'help') {         
+
+
+         
+         const help_embed = new Discord.MessageEmbed()
+            .setColor(0x5ab43e)
+            .setTitle('List Of Commands')
+            .setDescription(
+               '1. `$ping` -> Use this command to ping the bot \
+               \n2. `$roast <username>` -> Use this command to roast a user \
+               \n3. `$spam <username> <number of spams>` -> Use this command to spam a user \
+               \n4. `$xyber laugh` -> Use this command to make xyber laugh \
+               \n5. `$sparta gali` -> Sparta ka gali sunna hai? \
+               \n6. `$sparta sauce` -> Want to see a spicy sparta? ( ͡≖ ͜ʖ ͡≖)\
+               \n7. `$rickroll <channel-id>` -> Use this command to start rickrolling people in the given channel id'
+            )
+            // .setDescription('')
+
+            msg.channel.send(help_embed);   
+      }
    }
 });
+
+
 
 //---------- SPAM COMMAND ----------//
 client.on('message', async msg => {      
