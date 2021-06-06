@@ -155,7 +155,7 @@ client.on('message', async msg => {
 
       // 1
       if(CMD_NAME === 'sparta' && sparta_command === 'sauce') {
-         msg.channel.send("Yummy, Here's a spicy Sparta for you ( ͡≖ ͜ʖ ͡≖)\n", {
+         msg.channel.send("Yummy, Here's a spicy Sparta for you (͠≖ ͜ʖ͠≖)👌\n", {
             files: [spartaImages[Math.floor(Math.random() * spartaImages.length)]]
          });
       }
