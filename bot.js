@@ -4,6 +4,9 @@ const client = new Discord.Client();
 const path = require('path');
 const ytdl = require('ytdl-core');
 require('dotenv').config();
+// import { Intents } from 'discord.js';
+// let intents = new Intents(Intents.NON_PRIVILEGED);
+// intents.add('GUILD_MEMBERS');
 
 client.login(process.env.BOT_TOKEN);
 
@@ -61,6 +64,18 @@ client.on('message', async msg => {
    }
 });
 
+
+client.on('message', async msg => {
+   if(msg.content.startsWith(PREFIX)) {
+      const CMD_NAME = msg.content.substring(1);
+      
+      // Spam Method
+      if(CMD_NAME === 'show') {
+         msg.guild.members.cache.forEach(member => console.log(member.user.username));
+         // console.log(x.cache.);
+      }      
+   }
+});
 
 
 //---------- SPAM COMMAND ----------//
@@ -189,7 +204,7 @@ client.on('message', async msg => {
 
       if(CMD_NAME === 'rickroll') {         
          var connection = await channel.join();
-         connection.play(ytdl('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO', {
+         connection.play(ytdl('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=OfficialRickAstley', {
             filter: 'audioonly',
             volume: 1.0
          }));
